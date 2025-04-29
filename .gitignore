@@ -1,0 +1,130 @@
+# Gitignore file for Python FastAPI projects
+
+# --- Byte-compiled / optimized / DLL files ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Distribution / packaging ---
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+*.manifest
+*.spec
+
+# --- Virtual environments ---
+# Exclude virtual environment folders to avoid checking in dependencies
+# specific to a developer's machine. Use a requirements file instead.
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# --- Environment variables ---
+# Exclude files containing sensitive credentials or environment-specific settings.
+# Use environment variables or a config management system in production.
+# Include a template/example file in Git instead (e.g., .env.example).
+.env.*
+!.env.example
+!.env.template
+
+# --- Databases ---
+# Exclude local database files (e.g., SQLite).
+*.db
+*.sqlite3
+# If you use a different local database file, add its extension here.
+# *.rdb
+# *.db-journal # SQLite write-ahead log
+
+# --- Test artifacts ---
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+pytest-report.html
+report/
+.tox/
+
+# --- IDE / Editor configuration files ---
+# VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# PyCharm
+.idea/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Atom
+.atom/
+
+# Vim
+*.swp
+*.swo
+*~
+*.bak # General backup files
+
+# --- OS generated files ---
+# macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+
+# Windows
+Thumbs.db
+ehthumbs_vista.db
+Desktop.ini
+
+# --- Logs ---
+# Exclude log files if they are generated locally during development
+*.log
+logs/
+*.log.*
+
+# --- FastAPI Specific (Optional - uncomment if needed) ---
+# If you generate static files locally during development and don't want to track them
+# staticfiles/
+# media/
+
+# --- Jupyter Notebook ---
+# Exclude Jupyter Notebook checkpoints
+.ipynb_checkpoints
+profile_default/
+ipython_config.py
+
+# --- Other ---
+# Add any other project-specific files or directories that should be ignored below
+# e.g., local reports, temporary data files, etc.
+# temp_data/
+# reports/
+

@@ -1,0 +1,297 @@
+python: can't open file '/home/mugund/panuval-api/python.py': [Errno 2] No such file or directory
+INFO:     Will watch for changes in these directories: ['/home/mugund/panuval-api']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [1857373] using WatchFiles
+INFO:     Started server process [1857375]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     31.94.31.44:55528 - "GET /docs HTTP/1.1" 200 OK
+INFO:     31.94.31.44:55528 - "GET /api/openapi.json HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     195.184.76.123:42753 - "GET / HTTP/1.1" 200 OK
+INFO:     195.184.76.142:40583 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+INFO:     138.197.145.239:50372 - "GET / HTTP/1.1" 200 OK
+INFO:     138.197.145.239:50378 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     61.81.119.199:43899 - "GET / HTTP/1.0" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1857375]
+INFO:     Stopping reloader process [1857373]
+INFO:     Will watch for changes in these directories: ['/home/mugund/panuval-api']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [1863195] using WatchFiles
+INFO:     Started server process [1863197]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     31.94.31.44:51455 - "GET /docs HTTP/1.1" 200 OK
+INFO:     31.94.31.44:51455 - "GET /api/openapi.json HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     164.52.24.186:50591 - "GET / HTTP/1.1" 200 OK
+INFO:     164.52.24.186:50591 - "GET / HTTP/1.1" 200 OK
+INFO:     164.52.24.186:50591 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     164.52.24.186:50591 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     164.52.24.186:50591 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     164.52.24.186:50591 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     165.227.52.181:41474 - "GET / HTTP/1.1" 200 OK
+INFO:     165.227.52.181:41490 - "GET /login HTTP/1.1" 404 Not Found
+INFO:     148.113.214.206:50514 - "GET / HTTP/1.1" 200 OK
+INFO:     184.105.139.119:4691 - "GET / HTTP/1.1" 200 OK
+INFO:     184.105.139.111:49619 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     184.105.139.123:37863 - "GET /?format=json HTTP/1.1" 200 OK
+WARNING:  Unsupported upgrade request.
+WARNING:  No supported WebSocket library detected. Please use 'pip install uvicorn[standard]', or install 'websockets' or 'wsproto' manually.
+WARNING:  Invalid HTTP request received.
+INFO:     86.54.31.42:46692 - "GET / HTTP/1.1" 200 OK
+INFO:     86.54.31.42:47062 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     198.235.24.196:64702 - "GET / HTTP/1.1" 200 OK
+INFO:     139.59.58.140:52496 - "GET /aaa9 HTTP/1.1" 404 Not Found
+INFO:     139.59.58.140:52506 - "GET /aab8 HTTP/1.1" 404 Not Found
+INFO:     139.59.58.140:52508 - "GET / HTTP/1.1" 200 OK
+INFO:     58.141.235.235:61598 - "GET / HTTP/1.0" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     147.185.132.112:62754 - "GET / HTTP/1.1" 200 OK
+INFO:     88.151.192.60:38176 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     178.128.227.69:59238 - "GET / HTTP/1.1" 200 OK
+INFO:     178.128.227.69:52402 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     178.128.227.69:52412 - "GET /robots.txt HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+INFO:     206.168.34.207:60246 - "GET / HTTP/1.1" 200 OK
+INFO:     206.168.34.207:60256 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+INFO:     206.168.34.207:57762 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+INFO:     35.232.4.14:59934 - "GET /api/sessions HTTP/1.1" 404 Not Found
+INFO:     14.38.13.57:62923 - "GET / HTTP/1.0" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     87.236.176.151:55625 - "GET / HTTP/1.1" 200 OK
+INFO:     221.168.158.156:63348 - "GET / HTTP/1.0" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     14.53.247.82:14196 - "GET / HTTP/1.0" 200 OK
+INFO:     218.154.184.115:63631 - "GET / HTTP/1.0" 200 OK
+INFO:     198.235.24.26:57712 - "GET / HTTP/1.1" 200 OK
+INFO:     205.210.31.152:57544 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     134.199.173.6:57126 - "GET / HTTP/1.1" 200 OK
+INFO:     134.199.173.6:57128 - "GET /login HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     52.15.156.9:46850 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     69.131.83.138:60866 - "GET / HTTP/1.0" 200 OK
+INFO:     147.185.132.153:62742 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     148.113.214.206:47414 - "GET / HTTP/1.1" 200 OK
+INFO:     198.235.24.19:61868 - "GET / HTTP/1.1" 200 OK
+INFO:     109.191.207.110:57736 - "GET /.well-known/agent.json HTTP/1.1" 404 Not Found
+INFO:     100.15.193.231:61403 - "GET / HTTP/1.0" 200 OK
+INFO:     45.156.129.134:50055 - "GET / HTTP/1.1" 200 OK
+INFO:     44.200.28.234:61059 - "GET / HTTP/1.1" 200 OK
+INFO:     198.235.24.149:65518 - "GET / HTTP/1.1" 200 OK
+INFO:     20.65.193.113:55420 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     206.168.34.217:34812 - "GET / HTTP/1.1" 200 OK
+INFO:     206.168.34.217:34472 - "GET / HTTP/1.1" 200 OK
+INFO:     206.168.34.217:34478 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+INFO:     206.168.34.217:42748 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+INFO:     74.82.47.7:39085 - "GET / HTTP/1.1" 200 OK
+INFO:     74.82.47.7:14513 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     74.82.47.59:10573 - "GET /?format=json HTTP/1.1" 200 OK
+WARNING:  Unsupported upgrade request.
+WARNING:  No supported WebSocket library detected. Please use 'pip install uvicorn[standard]', or install 'websockets' or 'wsproto' manually.
+WARNING:  Invalid HTTP request received.
+INFO:     34.78.35.211:40852 - "GET / HTTP/1.1" 200 OK
+INFO:     35.232.4.14:35160 - "GET /api/sessions HTTP/1.1" 404 Not Found
+INFO:     148.113.214.206:51860 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.58:37074 - "GET / HTTP/1.1" 200 OK
+INFO:     167.94.138.58:54628 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.58:56372 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     71.6.134.231:58122 - "GET / HTTP/1.1" 200 OK
+INFO:     71.6.134.231:34180 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+INFO:     91.196.152.120:52187 - "GET / HTTP/1.1" 200 OK
+INFO:     213.32.32.82:46133 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     54.244.60.245:60364 - "GET / HTTP/1.1" 200 OK
+INFO:     185.165.191.26:47522 - "GET / HTTP/1.1" 200 OK
+INFO:     185.165.191.26:47526 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     46.101.86.128:47316 - "GET / HTTP/1.1" 200 OK
+INFO:     46.101.86.128:47328 - "GET /login HTTP/1.1" 404 Not Found
+INFO:     147.185.132.75:63652 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     45.156.129.80:60627 - "GET / HTTP/1.1" 200 OK
+INFO:     18.223.158.40:50412 - "GET / HTTP/1.1" 200 OK
+INFO:     18.223.158.40:44512 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     154.212.141.190:17672 - "GET /api/v2/heartbeat HTTP/1.1" 404 Not Found
+INFO:     154.212.141.190:17956 - "GET / HTTP/1.1" 200 OK
+INFO:     3.16.215.32:38440 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     68.183.9.38:59028 - "GET / HTTP/1.1" 200 OK
+INFO:     167.94.145.104:37992 - "GET / HTTP/1.1" 200 OK
+INFO:     167.94.145.104:38122 - "GET / HTTP/1.1" 200 OK
+INFO:     167.94.145.104:38138 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.145.104:38164 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+INFO:     205.210.31.129:59302 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     64.62.156.161:61513 - "GET / HTTP/1.1" 200 OK
+INFO:     64.62.156.159:34099 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     64.62.156.160:33783 - "GET /?format=json HTTP/1.1" 200 OK
+WARNING:  Unsupported upgrade request.
+WARNING:  No supported WebSocket library detected. Please use 'pip install uvicorn[standard]', or install 'websockets' or 'wsproto' manually.
+WARNING:  Invalid HTTP request received.
+INFO:     205.210.31.151:60782 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     45.55.217.115:46534 - "GET / HTTP/1.1" 200 OK
+INFO:     45.55.217.115:46546 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     148.113.214.206:56840 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     206.168.34.196:58912 - "GET / HTTP/1.1" 200 OK
+INFO:     206.168.34.196:49452 - "GET / HTTP/1.1" 200 OK
+INFO:     206.168.34.196:49508 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+INFO:     206.168.34.196:34564 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+INFO:     174.138.35.76:60626 - "GET / HTTP/1.1" 200 OK
+INFO:     174.138.35.76:60642 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     76.112.5.62:63526 - "GET / HTTP/1.0" 200 OK
+INFO:     205.210.31.234:61780 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     138.68.254.169:57404 - "GET / HTTP/1.1" 200 OK
+INFO:     138.68.254.169:57420 - "GET /login HTTP/1.1" 404 Not Found
+INFO:     35.195.23.184:49272 - "GET / HTTP/1.1" 200 OK
+INFO:     148.113.214.206:41081 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     147.185.132.219:58850 - "GET / HTTP/1.1" 200 OK
+INFO:     185.242.226.48:43098 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     47.237.9.72:51564 - "GET / HTTP/1.1" 200 OK
+INFO:     47.237.9.72:51566 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     86.147.32.227:41853 - "GET / HTTP/1.0" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     205.210.31.128:58570 - "GET / HTTP/1.1" 200 OK
+INFO:     167.94.138.34:60552 - "GET / HTTP/1.1" 200 OK
+INFO:     167.94.138.34:55568 - "GET / HTTP/1.1" 200 OK
+INFO:     167.94.138.34:55578 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.34:58238 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+INFO:     18.220.154.78:58750 - "GET / HTTP/1.1" 200 OK
+INFO:     35.232.4.14:44986 - "GET /api/sessions HTTP/1.1" 404 Not Found
+INFO:     162.142.125.219:55626 - "GET / HTTP/1.1" 200 OK
+INFO:     162.142.125.219:50782 - "GET / HTTP/1.1" 200 OK
+INFO:     162.142.125.219:50794 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+INFO:     162.142.125.219:33208 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     87.236.176.162:48843 - "GET / HTTP/1.1" 200 OK
+INFO:     111.7.96.159:30646 - "GET / HTTP/1.1" 200 OK
+INFO:     111.7.96.159:31142 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+INFO:     198.235.24.67:65080 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     139.59.171.206:49502 - "GET / HTTP/1.1" 200 OK
+INFO:     139.59.171.206:49508 - "GET /login HTTP/1.1" 404 Not Found
+INFO:     44.220.188.152:45340 - "GET / HTTP/1.1" 200 OK
+INFO:     195.178.110.224:42424 - "GET / HTTP/1.0" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     148.113.214.206:36252 - "GET / HTTP/1.1" 200 OK
+INFO:     147.185.132.36:62586 - "GET / HTTP/1.1" 200 OK
+INFO:     64.62.156.119:41255 - "GET / HTTP/1.1" 200 OK
+INFO:     64.62.156.112:20139 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     64.62.156.111:28363 - "GET /?format=json HTTP/1.1" 200 OK
+WARNING:  Unsupported upgrade request.
+WARNING:  No supported WebSocket library detected. Please use 'pip install uvicorn[standard]', or install 'websockets' or 'wsproto' manually.
+WARNING:  Invalid HTTP request received.
+INFO:     162.142.125.206:44128 - "GET / HTTP/1.1" 200 OK
+INFO:     162.142.125.206:56920 - "GET / HTTP/1.1" 200 OK
+INFO:     162.142.125.206:56922 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+INFO:     162.142.125.206:33154 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     205.210.31.101:57884 - "GET / HTTP/1.1" 200 OK
+INFO:     71.6.134.235:38262 - "GET / HTTP/1.1" 200 OK
+INFO:     71.6.134.235:52366 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+INFO:     64.227.112.120:58562 - "GET / HTTP/1.1" 200 OK
+INFO:     64.227.112.120:58562 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     64.227.112.120:58574 - "GET /HNAP1 HTTP/1.1" 404 Not Found
+INFO:     64.227.112.120:58584 - "GET /PSIA/index HTTP/1.1" 404 Not Found
+INFO:     64.227.112.120:58598 - "POST /onvif/device_service HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     172.202.118.72:47594 - "GET / HTTP/1.1" 200 OK
+INFO:     206.168.34.199:33144 - "GET / HTTP/1.1" 200 OK
+INFO:     206.168.34.199:40700 - "GET / HTTP/1.1" 200 OK
+INFO:     206.168.34.199:40706 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+INFO:     206.168.34.199:57556 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+INFO:     18.220.154.78:50526 - "GET / HTTP/1.1" 200 OK
+INFO:     18.220.154.78:50532 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     143.198.72.239:47414 - "GET / HTTP/1.1" 200 OK
+INFO:     143.198.72.239:47426 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     93.123.109.36:40996 - "GET / HTTP/1.1" 200 OK
+INFO:     93.123.109.36:40996 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     198.235.24.149:58664 - "GET / HTTP/1.1" 200 OK
+INFO:     103.203.57.20:36630 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     128.199.19.18:38980 - "GET / HTTP/1.1" 200 OK
+INFO:     128.199.19.18:38990 - "GET /login HTTP/1.1" 404 Not Found
+INFO:     199.45.155.96:54910 - "GET / HTTP/1.1" 200 OK
+INFO:     199.45.155.96:58200 - "GET / HTTP/1.1" 200 OK
+INFO:     199.45.155.96:58216 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+INFO:     199.45.155.96:58282 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+WARNING:  Invalid HTTP request received.
+INFO:     198.235.24.225:57788 - "GET / HTTP/1.1" 200 OK
+INFO:     205.210.31.33:65312 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     148.113.214.206:53257 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     157.245.7.81:43334 - "GET / HTTP/1.1" 200 OK
+INFO:     157.245.7.81:43340 - "GET /login HTTP/1.1" 404 Not Found
+INFO:     35.232.4.14:50070 - "GET /api/sessions HTTP/1.1" 404 Not Found
+INFO:     64.62.197.203:4773 - "GET / HTTP/1.1" 200 OK
+INFO:     64.62.197.208:32877 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     64.62.197.200:11551 - "GET /?format=json HTTP/1.1" 200 OK
+WARNING:  Unsupported upgrade request.
+WARNING:  No supported WebSocket library detected. Please use 'pip install uvicorn[standard]', or install 'websockets' or 'wsproto' manually.
+WARNING:  Invalid HTTP request received.
+INFO:     93.123.109.122:34594 - "GET / HTTP/1.1" 200 OK
+INFO:     93.123.109.122:34594 - "GET /favicon.ico HTTP/1.1" 404 Not Found

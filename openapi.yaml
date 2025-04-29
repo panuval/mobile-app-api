@@ -1,0 +1,886 @@
+# Step 1.1: Initial OpenAPI Structure
+# Goal: Create the basic skeleton of the OpenAPI document.
+openapi: 3.0.3
+info:
+  title: Panuval Bookstore API
+  version: 1.0.0
+  description: API specification for the Panuval Tamil Bookstore mobile application.
+servers:
+  - url: https://api.panuval.com/v1
+    description: Production Server
+  - url: https://staging-api.panuval.com/v1
+    description: Staging Server
+paths:
+  /auth/otp/request:
+    post:
+      summary: Request OTP for Login/Registration
+      description: Sends an OTP to the provided mobile number via WhatsApp/SMS.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OtpRequest'
+      responses:
+        '200': # Using 200 OK as OTP might be sent async, success means request accepted
+          description: OTP sent via the selected method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OtpResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /auth/otp/verify:
+    post:
+      summary: Verify OTP and Authenticate
+      description: Verifies the OTP and returns an access token if successful. Indicates if it's a new user registration.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OtpVerificationInput'
+      responses:
+        '200':
+          description: OTP verified successfully. Access token provided.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthSuccessResponse'
+        '400': # Specific errors like "Invalid OTP", "OTP Expired" can use ErrorResponse
+          $ref: '#/components/responses/BadRequest'
+        '401': # Incorrect OTP could be 401
+           description: Invalid OTP or Mobile Number mismatch.
+           content:
+             application/json:
+               schema:
+                 $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /profile:
+    get:
+      summary: Get User Profile
+      description: Retrieves the profile information for the authenticated user.
+      security:
+        - bearerAuth: [] # Apply the security scheme defined in Step 1.2
+      responses:
+        '200':
+          description: Successfully retrieved user profile.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfileResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    put:
+      summary: Update User Profile
+      description: Updates the profile information for the authenticated user. Used for initial profile completion for new users and subsequent updates.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserProfileInput'
+      responses:
+        '200':
+          description: Profile updated successfully. Returns the updated profile.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfileResponse'
+        '400': # For validation errors on name/email
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /app/home/layout:
+    get:
+      summary: Get Home Page Layout Structure
+      description: Retrieves the metadata (type, order, visibility, ID) for sections to be displayed on the home page, ordered correctly. Content is loaded separately.
+      responses:
+        '200':
+          description: Successfully retrieved home page layout structure.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SectionMetadata'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /app/home/section/{sectionId}:
+    get:
+      summary: Get Home Page Section Content
+      description: Retrieves the detailed content for a specific home page section, identified by its ID. Used for lazy loading.
+      parameters:
+        - name: sectionId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: The unique ID of the section whose content is requested.
+      responses:
+        '200':
+          description: Successfully retrieved section content. The structure varies based on the section's type.
+          content:
+            application/json:
+              schema:
+                # Content varies; use oneOf or examples to illustrate possibilities
+                # Example showing possible responses based on sectionType
+                oneOf:
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/ItemSummary'
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/AuthorPublisherCategoryInfo'
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/BannerContent'
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/LabelContent'
+        '404':
+          $ref: '#/components/responses/NotFound' # If sectionId is invalid
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /items/auto-suggest:
+    get:
+      summary: Auto-suggest Items
+      description: Provides auto-suggestions for items based on a keyword search.
+      parameters:
+        - name: q
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Keyword for auto-suggestion.
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 10
+          description: Maximum number of suggestions to return.
+      responses:
+        '200':
+          description: Successfully retrieved auto-suggestions.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AutoSuggestSummary'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /items/search:
+    get:
+      summary: Search and Filter Items
+      description: Retrieves a list of items based on keyword search and various filter criteria. Supports sorting and pagination.
+      parameters:
+        - $ref: '#/components/parameters/SearchQueryParam'
+        - $ref: '#/components/parameters/CategoryFilterParam'
+        - $ref: '#/components/parameters/AuthorFilterParam'
+        - $ref: '#/components/parameters/PublisherFilterParam'
+        - $ref: '#/components/parameters/PriceMinFilterParam'
+        - $ref: '#/components/parameters/PriceMaxFilterParam'
+        - $ref: '#/components/parameters/YearFilterParam'
+        - $ref: '#/components/parameters/StockFilterParam'
+        - $ref: '#/components/parameters/LanguageFilterParam'
+        - $ref: '#/components/parameters/ItemTypeFilterParam'
+        - $ref: '#/components/parameters/SortParam'
+        - $ref: '#/components/parameters/PageParam'
+        - $ref: '#/components/parameters/PageSizeParam'
+      responses:
+        '200':
+          description: Successfully retrieved search results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemSearchResponse'
+        '400': # For invalid filter/sort values
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /items/{itemId}:
+    get:
+      summary: Get Item Details
+      description: Retrieves detailed information about a specific item using its ID.
+      parameters:
+        - name: itemId
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: The unique ID of the item.
+      responses:
+        '200':
+          description: Successfully retrieved item details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemDetail'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A human-readable error message.
+        errorCode:
+          type: string
+          description: An optional machine-readable error code.
+          nullable: true
+      required:
+        - message
+    ValidationErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: General validation error message (e.g., "Validation Failed").
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+                description: The field that failed validation.
+              message:
+                type: string
+                description: The specific validation error message for the field.
+            required:
+              - field
+              - message
+      required:
+        - message
+        - errors
+    OtpRequest:
+      type: object
+      properties:
+        mobileNumber:
+          type: string
+          description: User's mobile number including country code.
+          example: "+919876543210"
+        verificationMethod: # Optional field default uses SMS
+          type: string
+          enum: [WHATSAPP, SMS]
+          description: "Indicates the primary method used to send the OTP"
+          default: SMS
+      required:
+        - mobileNumber
+    OtpResponse:
+      type: object
+      properties:
+        expiryInSeconds:
+          type: integer
+          description: Time in seconds until the OTP expires.
+          example: 300
+        verificationMethod:
+          type: string
+          enum: [WHATSAPP, SMS]
+          description: The method used to send the OTP.
+          example: "SMS"
+      required:
+        - expiryInSeconds
+        - verificationMethod
+    OtpVerificationInput:
+      type: object
+      properties:
+        mobileNumber:
+          type: string
+          description: User's mobile number used for OTP request.
+          example: "+919876543210"
+        otp:
+          type: string
+          description: The One-Time Password received by the user.
+          example: "123456"
+      required:
+        - mobileNumber
+        - otp
+    AuthSuccessResponse:
+      type: object
+      properties:
+        accessToken:
+          type: string
+          description: JWT token for authenticating subsequent requests.
+        isNewUser:
+          type: boolean
+          description: Indicates if the user just completed registration.
+      required:
+        - accessToken
+        - isNewUser
+    UserProfileInput:
+      type: object
+      properties:
+        name:
+          type: string
+          description: User's full name.
+          example: "Suresh Kumar"
+        email:
+          type: string
+          format: email
+          description: User's email address.
+          example: "saravanan@panuval.com"
+          nullable: true # Assuming email is optional after OTP
+        consentNewsletter:
+          type: boolean
+          description: Consent to receive email newsletters.
+          default: true
+        consentWhatsAppPromo:
+          type: boolean
+          description: Consent to receive promotional messages via WhatsApp.
+          default: true
+      required:
+        - name # Name is required post-registration
+    UserProfileResponse:
+      type: object
+      properties:
+        id:
+          type: string # Assuming UUID or similar
+          format: uuid
+          description: Unique identifier for the user.
+          readOnly: true
+        mobileNumber:
+          type: string
+          description: User's registered mobile number.
+          readOnly: true
+          example: "919876543210"
+        name:
+          type: string
+          description: User's full name.
+        email:
+          type: string
+          format: email
+          description: User's email address.
+          nullable: true
+        consentNewsletter:
+          type: boolean
+        consentWhatsAppPromo:
+          type: boolean
+      required:
+        - id
+        - mobileNumber
+        - name
+        - consentNewsletter
+        - consentWhatsAppPromo
+    AuthorPublisherCategoryInfo:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the author, publisher, or category.
+        imageUrl:
+          type: string
+          format: url
+          nullable: true
+        searchFilter:
+          $ref: '#/components/schemas/SearchFilter'
+      required:
+        - name
+    BannerContent:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of to display for the banner.
+        imageUrl:
+          type: string
+          format: url
+        linkType:
+          type: string
+          enum: [ITEM, NONE, SEARCH_FILTER]
+        itemId:
+          type: integer
+          nullable: true
+          description: ID of the item to link to, if applicable.  
+        searchFilter:
+          $ref: '#/components/schemas/SearchFilter'
+          nullable: true
+      required:
+        - imageUrl
+        - linkType
+    LabelContent:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of to display for the Label.
+        labelColor:
+          type: string
+          description: Color of the label.
+        textColor:
+          type: string
+          description: Color of the text.
+        linkType:
+          type: string
+          enum: [ITEM, NONE, SEARCH_FILTER]
+        itemId:
+          type: integer
+          nullable: true
+          description: ID of the item to link to, if applicable.  
+        searchFilter:
+          $ref: '#/components/schemas/SearchFilter'
+          nullable: true
+      required:
+        - name
+        - linkType
+    SectionMetadata:
+      type: object
+      properties:
+        sectionId:
+          type: string
+          format: uuid
+        displayType:
+          type: string
+          enum: [TEXT, CAROUSEL, TILE]
+        contentType: # This is the type of content in the section
+          type: string
+          enum: [LABEL, BANNER, BOOK, CATEGORY, AUTHOR, PUBLISHER]
+        title:
+          type: string
+          nullable: true
+        showTitle:
+          type: boolean
+          description: Indicates if the title should be displayed.
+          default: true
+        subTitle:
+          type: string
+          nullable: true
+        showSubTitle:
+          type: boolean
+          description: Indicates if the subtitle should be displayed.
+          default: true
+        showViewAll:
+          type: boolean
+          description: Indicates if "View All" should be displayed.
+          default: false
+        showName:
+          type: boolean
+          description: Indicates if the name of the items to  be displayed.
+          default: true
+        showAuthor:
+          type: boolean
+          description: Indicates if the author of the items to be displayed, if present.
+          default: true
+        order:
+          type: integer
+        visible:
+          type: boolean
+      required:
+        - sectionId
+        - displayType
+        - order
+        - visible
+    # Need ItemSummary for book sections later
+    AutoSuggestSummary:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the item.
+        suggestionType:
+          type: string
+          enum: [ITEM, AUTHOR, PUBLISHER, CATEGORY]
+        searchFilter:
+          $ref: '#/components/schemas/SearchFilter'
+      required:
+        - name
+        - suggestionType
+    ItemSummary:
+      type: object
+      properties:
+        itemId:
+          type: integer
+        name:
+          type: string
+          description: Name of the item.
+        imageUrl:
+          type: string
+          format: url
+          nullable: true
+        price:
+          type: number
+          format: float
+          description: Current selling price.
+        originalPrice:
+          type: number
+          format: float
+          description: Original price, MRP.
+        discountPercentage:
+          type: number
+          format: float
+          description: Percentage discount applied. Null if no discount.
+          nullable: true
+        stockStatus:
+          $ref: '#/components/schemas/StockStatus'
+        label:
+          $ref: '#/components/schemas/ItemLabel'
+      required:
+        - itemId
+        - title
+        - price
+        - stockStatus
+    PaginationInfo:
+      type: object
+      properties:
+        currentPage:
+          type: integer
+        pageSize:
+          type: integer
+        totalItems:
+          type: integer
+        totalPages:
+          type: integer
+      required:
+        - currentPage
+        - pageSize
+        - totalItems
+        - totalPages
+    ItemSearchResponse:
+      type: object
+      properties:
+        displayText:
+          type: string
+          description: Text to display for the search results.
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ItemSummary'
+        pagination:
+          $ref: '#/components/schemas/PaginationInfo'
+        # Optionally include available facets/filters based on the results
+        # availableFilters: { type: object, ... }
+      required:
+        - items
+        - pagination
+    StockStatus:
+      type: string
+      enum: [AVAILABLE, IN_STOCK, OUT_OF_STOCK, PRE_ORDER, OUT_OF_PRINT]
+      description: Current stock status of the item
+    ItemDetail:
+      type: object
+      properties:
+        itemId:
+          type: integer
+        title:
+          type: string
+          description: Name of the item.
+        subTitle:
+          type: string
+          description: Subtitle of the item.
+        description:
+          type: string
+          description: Description of the item.
+        coverImageUrl:
+          type: string
+          format: url
+          nullable: true
+        moreImages:
+          type: array
+          items:
+            type: string
+            format: url
+          nullable: true
+        price:
+          type: number
+          format: float
+          description: Current selling price.
+        originalPrice:
+          type: number
+          format: float
+          description: Discounted price, if applicable. Null otherwise.
+          nullable: true
+        discountPercentage:
+          type: number
+          format: float
+          description: Percentage discount applied. Null if no discount.
+          nullable: true
+        stockStatus:
+          $ref: '#/components/schemas/StockStatus'
+        shortDescription:
+          type: string
+          description: Short description of the item.
+        details:
+          type: object
+          additionalProperties:
+            type: string
+          description: Map containing additional details like ISBN, format, binding, etc. about the item.
+          nullable: true
+        authors:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuthorInfo'
+        publishers:
+          type: array
+          items:
+            $ref: '#/components/schemas/PublisherInfo'
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/CategoryInfo'
+        highlights:
+          type: array
+          items:
+            type: string
+          description: List of highlights or key features of the item.
+        policyText:
+          type: string
+          description: Policy text related to the item, such as shipping, refund, return policy.
+        label:
+          $ref: '#/components/schemas/ItemLabel'
+      required:
+        - itemId
+        - title
+        - price
+        - stockStatus
+    ItemLabel:
+      type: object
+      properties:
+        label:
+          type: string
+          description: Label for the item, such as "Best Seller", "New Arrival", etc.
+        showLabel:
+          type: boolean
+          description: Indicates if the label should be displayed.
+          default: true 
+        labelType:
+          type: string
+          enum: [BEST_SELLER, NEW_ARRIVAL, AWARD_WINNING, NONE]
+          description: Type of label to be displayed.
+    SearchFilter:
+      type: string
+      description: A string representing the search filter parameters.
+      example: 'authorId=123&categoryId=456'
+    AuthorInfo:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the publisher
+        name:
+          type: string
+          description: Name of the author, publisher, or category.
+        searchFilter:
+          $ref: '#/components/schemas/SearchFilter'
+        type:
+          type: string
+          enum: [AUTHOR, TRANSLATOR, EDITOR, ILLUSTRATOR, CONTRIBUTOR]
+          description: Type of the author
+      required:
+        - name
+        - searchFilter
+    PublisherInfo:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the publisher.
+        name:
+          type: string
+          description: Name of the publisher
+        searchFilter:
+          $ref: '#/components/schemas/SearchFilter'
+      required:
+        - name
+        - searchFilter
+    CategoryInfo:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the category.
+        name:
+          type: string
+          description: Name of the category
+        searchFilter:
+          $ref: '#/components/schemas/SearchFilter'
+      required:
+        - name
+        - searchFilter
+  responses:
+    BadRequest:
+      description: Bad Request - Often due to validation errors or malformed input.
+      content:
+        application/json:
+          schema:
+            oneOf: # Can be a general error or a specific validation error
+              - $ref: '#/components/schemas/ErrorResponse'
+              - $ref: '#/components/schemas/ValidationErrorResponse'
+    Unauthorized:
+      description: Unauthorized - Authentication token is missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Forbidden:
+      description: Forbidden - Authentication succeeded, but user lacks permission.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Not Found - The requested resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InternalServerError:
+      description: Internal Server Error - An unexpected error occurred on the server.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    SearchQueryParam:
+      name: q
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Keyword search query.
+    CategoryFilterParam:
+      name: categoryId
+      in: query
+      required: false
+      schema:
+        type: array # Allow multiple category selections
+        items:
+          type: string
+          format: uuid
+      style: form # How array parameters are formatted (e.g., categoryId=uuid1&categoryId=uuid2)
+      explode: true
+      description: Filter items by one or more category IDs.
+    AuthorFilterParam:
+      name: authorId
+      in: query
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          format: uuid
+      style: form
+      explode: true
+      description: Filter items by one or more author IDs.
+    PublisherFilterParam:
+      name: publisherId
+      in: query
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          format: uuid
+      style: form
+      explode: true
+      description: Filter items by one or more publisher IDs.
+    PriceMinFilterParam:
+      name: priceMin
+      in: query
+      required: false
+      schema:
+        type: number
+        format: float
+      description: Minimum price filter.
+    PriceMaxFilterParam:
+      name: priceMax
+      in: query
+      required: false
+      schema:
+        type: number
+        format: float
+      description: Maximum price filter.
+    YearFilterParam:
+      name: year
+      in: query
+      required: false
+      schema:
+        type: array # Allow filtering by specific years
+        items:
+          type: integer
+      style: form
+      explode: true
+      description: Filter items by publication year(s).
+    StockFilterParam:
+      name: excludeOutOfStock
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: false
+      description: If true, exclude items that are out of stock.
+    LanguageFilterParam:
+      name: language
+      in: query
+      required: false
+      schema:
+        type: array # Allow filtering by language codes
+        items:
+          type: string
+          enum: [TAMIL, ENGLISH]
+      style: form
+      explode: true
+      description: Filter items by language code(s).
+    ItemTypeFilterParam:
+      name: itemType
+      in: query
+      required: false
+      schema:
+        type: array # Allow filtering by language codes
+        items:
+          type: string
+          enum: [BOOK]
+      style: form
+      explode: true
+      description: Filter items by language code(s).
+    SortParam:
+      name: sortBy
+      in: query
+      required: false
+      schema:
+        type: string
+        enum: [relevance, best_sellers, price_asc, price_desc, name_asc, name_desc, year_newest, year_oldest]
+        default: relevance
+      description: Sorting criteria for the results.
+    PageParam:
+      name: page
+      in: query
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      description: Page number for pagination.
+    PageSizeParam:
+      name: pageSize
+      in: query
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100 # Define a max page size
+        default: 20
+      description: Number of items per page.
+  securitySchemes:
+    bearerAuth: # Can be named anything, used later to reference
+      type: http
+      scheme: bearer
+      bearerFormat: JWT # Optional, for documentation
+      description: "JWT token obtained after successful OTP verification."
