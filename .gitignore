@@ -110,6 +110,7 @@ Desktop.ini
 *.log
 logs/
 *.log.*
+nohup.txt
 
 # --- FastAPI Specific (Optional - uncomment if needed) ---
 # If you generate static files locally during development and don't want to track them

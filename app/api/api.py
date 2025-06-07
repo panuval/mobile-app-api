@@ -1,11 +1,12 @@
 from fastapi import APIRouter
 
-from app.api.endpoints import users, products, cart, orders, banners, offers, campaigns, reviews, promotions, home, items
+from app.api.endpoints import users, products, cart, orders, banners, offers, campaigns, reviews, promotions, home, items, auth
 
 api_router = APIRouter()
 
 # Authentication routes
 api_router.include_router(users.router, prefix="", tags=["authentication"])
+api_router.include_router(auth.router, prefix="", tags=["otp-auth"])
 
 # Product management
 api_router.include_router(products.router, prefix="/products", tags=["products"])

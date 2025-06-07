@@ -6,22 +6,31 @@ class Settings(BaseSettings):
     PROJECT_NAME: str = "Panuval Book Store API"
     
     # MySQL database connection settings
-    MYSQL_SERVER: str = os.getenv("MYSQL_SERVER", "localhost")
-    MYSQL_USER: str = os.getenv("MYSQL_USER", "root")
-    MYSQL_PASSWORD: str = os.getenv("MYSQL_PASSWORD", "panuval689")
-    MYSQL_DB: str = os.getenv("MYSQL_DB", "panuval_oc3")
-    MYSQL_PORT: str = os.getenv("MYSQL_PORT", "3306")
-    SQLALCHEMY_DATABASE_URI: str = f"mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD}@{MYSQL_SERVER}:{MYSQL_PORT}/{MYSQL_DB}"
+    MYSQL_SERVER: str = "localhost"
+    MYSQL_USER: str = "root"
+    MYSQL_PASSWORD: str = "panuval689"
+    MYSQL_DB: str = "panuval_oc3"
+    MYSQL_PORT: str = "3306"
+    
+    @property
+    def SQLALCHEMY_DATABASE_URI(self) -> str:
+        return f"mysql+pymysql://{self.MYSQL_USER}:{self.MYSQL_PASSWORD}@{self.MYSQL_SERVER}:{self.MYSQL_PORT}/{self.MYSQL_DB}"
     
     # JWT token config
-    SECRET_KEY: str = os.getenv("SECRET_KEY", "your_secret_key_here")
+    SECRET_KEY: str = "your_secret_key_here"
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     
     # CORS settings
     BACKEND_CORS_ORIGINS: list = ["*"]
     
+    # MSG91 OTP Service settings
+    MSG91_AUTH_KEY: str = ""
+    MSG91_TEMPLATE_ID: str = ""
+    
     class Config:
         case_sensitive = True
+        env_file = ".env"
+        env_file_encoding = "utf-8"
 
 settings = Settings()

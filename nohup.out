@@ -295,3 +295,113 @@ WARNING:  No supported WebSocket library detected. Please use 'pip install uvico
 WARNING:  Invalid HTTP request received.
 INFO:     93.123.109.122:34594 - "GET / HTTP/1.1" 200 OK
 INFO:     93.123.109.122:34594 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     Will watch for changes in these directories: ['/root/Projects/mobile-app-api']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [39671] using WatchFiles
+INFO:     Started server process [39673]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     223.178.86.227:25408 - "GET /docs HTTP/1.1" 200 OK
+INFO:     223.178.86.227:25408 - "GET /api/openapi.json HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'msg91.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [39673]
+INFO:     Started server process [39720]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app/services/msg91_service.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [39720]
+INFO:     Started server process [45815]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app/schemas/otp.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [45815]
+INFO:     Started server process [45821]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app/api/endpoints/auth.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [45821]
+INFO:     Started server process [45823]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app/core/config.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [45823]
+INFO:     Started server process [45825]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app/api/api.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [45825]
+INFO:     Started server process [45827]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app/api/api.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [45827]
+INFO:     Started server process [45829]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'msg91.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [45829]
+INFO:     Started server process [45849]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     223.178.86.227:3834 - "GET /docs HTTP/1.1" 200 OK
+INFO:     223.178.86.227:3834 - "GET /api/openapi.json HTTP/1.1" 200 OK
+INFO:     223.196.65.7:45918 - "GET /docs HTTP/1.1" 200 OK
+INFO:     223.178.86.227:9080 - "POST /api/send-otp HTTP/1.1" 200 OK
+INFO:     223.196.65.7:45918 - "GET /api/openapi.json HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'app/core/config.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [45849]
+INFO:     Started server process [46003]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [46003]
+INFO:     Stopping reloader process [39671]
+INFO:     Will watch for changes in these directories: ['/root/Projects/mobile-app-api']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [46032] using WatchFiles
+INFO:     Started server process [46034]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     223.178.86.227:3846 - "GET /docs HTTP/1.1" 200 OK
+INFO:     223.178.86.227:3846 - "GET /api/openapi.json HTTP/1.1" 200 OK
+INFO:     223.178.86.227:23103 - "POST /api/send-otp HTTP/1.1" 200 OK
+INFO:     223.178.86.227:4582 - "POST /api/verify-otp HTTP/1.1" 200 OK
+INFO:     223.178.86.227:30496 - "POST /api/verify-otp HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'app/services/msg91_service.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [46034]
+INFO:     Started server process [46140]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     223.178.86.227:16708 - "POST /api/verify-otp HTTP/1.1" 200 OK
